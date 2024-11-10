@@ -144,3 +144,4 @@ selectGenero.addEventListener("change", function(){//Cuando el valor cambie, en 
 });
 
 
+//evento blur y focus
