@@ -70,3 +70,77 @@ cajaTexto.addEventListener("mousemove",function(){
 
 
 
+
+//<<<<<<<<<<---------------------Eventos de Teclado-------------------->>>>>>>>>>>>>
+
+let campoTexto = document.querySelector("#campoTexto");
+
+campoTexto.addEventListener("keydown", function(event){//al presionar alguna tecla
+
+    console.log("Has presionado la tecla: " + event.key); //Aqui lo que hacemos es recoger el evento y mostrar por consola la tecla que hemos apretado. Saldrán todas las teclas que pulsemos
+
+});
+
+campoTexto.addEventListener("keyup", function(event){//al levantar la tecla
+
+    console.warn("Has soltado la tecla: " + event.key);
+
+});
+
+campoTexto.addEventListener("keypress", function(event){//cuando mantiene pulsada la tecla. El recomendable es usar el keydown
+
+    console.error("Estas manteniendo pulsada la tecla: " + event.key);
+
+});
+
+
+
+
+//<<<<<<<<<<---------------------Eventos de formulario-------------------->>>>>>>>>>>>>
+
+let superformulario = document.querySelector("#superformulario");//Accedemos al elemento que contiene este id, en este caso el formulario
+
+superformulario.addEventListener("submit", function(event){//le ponemos a la escucha cuando lo envie, osea cuando aprete el boton de enviar
+
+    event.preventDefault(); //Evitamos el comportamiento por defecto del formulario(osea se evita el refrescar la pagina al enviar datos)
+
+    let nombre = document.querySelector("#nombre").value; //Aqui recogemos valores del input con el id nombre 
+    let correo = document.querySelector("#email").value; //Aqui recogemos valores del input con el id email 
+    let genero = document.querySelector("#genero").value; //Aqui recogemos valores del input con el id genero
+
+    alert(nombre); //sacamos por pantalla emergente los valores recogidos
+    alert(correo);
+    alert(genero);
+});
+
+
+//Otra forma de obtener valores del input
+let inputNombre = document.querySelector("#nombre");
+
+/*
+///como this no puede acceder ya que en las funciones callback no se puede comentare esta parte pero para que se vea la funcion callback y la explicación del this
+inputNombre.addEventListener("input", () => { //funcion callback (mirar aqui para mas info : https://www.freecodecamp.org/espanol/news/funciones-callback-en-javascript-que-son-los-callback-en-js-y-como-usarlos/)
+
+    console.log("El usuario ha escrito: "+this.value); //this referencia al objeto padre osea en este caso al inputNombre. Si fuese en una clase referencia a la clase
+    console.log("El usuario ha escrito: "+inputNombre.value) //Con esto nos vale. quitar la linea de arriba y dejar esta. 
+});
+*/
+
+inputNombre.addEventListener("input", function(){ 
+
+    console.log("El usuario ha escrito: "+this.value); //this referencia al objeto padre osea en este caso al inputNombre. Si fuese en una clase referencia a la clase
+
+});
+
+
+
+//Evento change
+let selectGenero = document.querySelector("#genero");
+
+selectGenero.addEventListener("change", function(){//Cuando el valor cambie, en este caso en el select de genero
+
+    console.warn("Has cambiado el select a: "+this.value);
+
+});
+
+
